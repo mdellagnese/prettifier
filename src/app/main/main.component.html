@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="form-group">
+          <input class="form-control result" #resultLabel  disabled placeholder="Prettify your number below..">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-md-4">
+          <div class="form-group">
+            <input type="number" class="form-control" #entryNumber placeholder="Ex.: 1.245.654">
+          </div>
+      </div>
+      
+      <div class="col col-md-2">
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" (click)="update(entryNumber.value)">Prettify</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" [@visibilityChanged]="visibilityError">
+      <div class="col col-md-6 alert alert-danger text-center" *ngIf="error">
+        {{ errorDescription }}
+      </div>
+    </div>
+
+    <div class="row" [@visibilityChanged]="visibilitySuccess">
+        <div class="col col-md-6 alert alert-success text-center" *ngIf="success">
+          Number prettified, check the first label :)
+        </div>
+      </div>
+</div>
